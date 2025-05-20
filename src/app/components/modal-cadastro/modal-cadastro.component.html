@@ -1,0 +1,59 @@
+<div class="modal-overlay" (click)="fecharModal()"></div>
+
+<div class="modal-content">
+  <h2>Cadastro</h2>
+
+  <form (ngSubmit)="enviarCadastro()" #form="ngForm">
+
+    <label>Nome: *</label>
+    <input type="text" name="nome" [(ngModel)]="dados.nome" required />
+    <div *ngIf="form.submitted && !dados.nome">
+      <small style="color: red;">Campo obrigatório</small>
+    </div>
+
+    <label>E-mail: *</label>
+    <input type="email" name="email" [(ngModel)]="dados.email" required />
+    <div *ngIf="form.submitted && !dados.email">
+      <small style="color: red;">Campo obrigatório</small>
+    </div>
+
+    <label>Senha: *</label>
+    <input type="password" name="senha" [(ngModel)]="dados.senha" required />
+    <div *ngIf="form.submitted && !dados.senha">
+      <small style="color: red;">Campo obrigatório</small>
+    </div>
+
+    <label>Tipo de usuário: *</label>
+    <select name="tipo" [(ngModel)]="dados.tipo" required>
+      <option value="">Selecione</option>
+      <option value="cliente">Cliente</option>
+      <option value="parceiro">Parceiro</option>
+    </select>
+    <div *ngIf="form.submitted && !dados.tipo">
+      <small style="color: red;">Campo obrigatório</small>
+    </div>
+
+    <label>WhatsApp: *</label>
+    <input type="text" name="whatsapp" [(ngModel)]="dados.whatsapp" required />
+    <div *ngIf="form.submitted && !dados.whatsapp">
+      <small style="color: red;">Campo obrigatório</small>
+    </div>
+
+    <h4>
+    <div class="checkbox-line">
+    <input type="checkbox" name="contatoWhatsapp" [(ngModel)]="dados.contatoWhatsapp" />
+    <label for="contatoWhatsapp">Aceita ser contatado via WhatsApp?</label>
+    </div>
+
+    <div class="checkbox-line">
+    <input type="checkbox" name="receberCampanhas" [(ngModel)]="dados.receberCampanhas" />
+    <label for="receberCampanhas">Aceita receber campanhas e promoções?</label>
+    </div>
+    </h4>
+
+    <div class="botoes">
+      <button type="submit">Cadastrar</button>
+      <button type="button" (click)="fecharModal()">Fechar</button>
+    </div>
+  </form>
+</div>

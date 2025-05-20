@@ -1,4 +1,7 @@
+<button (click)="mostrarCadastro = true">Cadastre-se</button>
+
 <nav>
+  
   <a routerLink="/home">Home</a> |
   <a routerLink="/servicos">Serviços</a> |
   <a routerLink="/aluguel-maquinas">Aluguel de Máquinas</a> |
@@ -9,3 +12,10 @@
 <hr>
 
 <router-outlet></router-outlet>
+
+
+<app-modal-cadastro
+  *ngIf="mostrarCadastro"
+  (fechar)="mostrarCadastro = false">
+</app-modal-cadastro>
+

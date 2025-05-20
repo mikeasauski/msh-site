@@ -1,3 +1,23 @@
 <p>login works!</p>
 <h1>Login</h1>
 <p>Entre com seu usuário e senha.</p>
+<h2>Login</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="email">E-mail:</label><br />
+  <input id="email" type="email" formControlName="email" /><br />
+  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    <small>Email inválido</small>
+  </div>
+
+  <br />
+
+  <label for="senha">Senha:</label><br />
+  <input id="senha" type="password" formControlName="senha" /><br />
+  <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
+    <small>Senha obrigatória</small>
+  </div>
+
+  <br />
+  <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+</form>
